@@ -69,7 +69,8 @@ func (f *Factory) CreateTraceExporter(
 		return nil, nil, err
 	}
 
-	return exp, nil, nil
+	stopFunc := func() error { return nil }
+	return exp, stopFunc, nil
 }
 
 // CreateMetricsExporter creates a metrics exporter based on this config.
